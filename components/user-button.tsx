@@ -13,7 +13,7 @@ import {
   DropdownMenuLabel
 } from '@/components/ui/dropdown-menu'
 import { useUser, useClerk } from '@clerk/clerk-react'
-import { LuLogOut, LuUser, LuLayoutDashboard, LuHouse } from "react-icons/lu";
+import { LuLogOut, LuLayoutDashboard, LuHouse } from "react-icons/lu";
 import { useNavigate, NavLink } from "react-router"
 import { Spinner } from '@/components/ui/spinner';
 
