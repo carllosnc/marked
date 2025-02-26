@@ -2,13 +2,19 @@ import {
   type RouteConfig,
   index,
   layout,
-  route
-} from "@react-router/dev/routes";
+  route,
+} from '@react-router/dev/routes'
 
 export default [
-  layout("layouts/base.tsx", [
-    index("routes/home.tsx"),
-    route("dashboard", "./routes/dashboard.tsx"),
-    route("sign-in", "routes/sign-in.tsx"),
+  // base
+  layout('layouts/base.tsx', [
+    index('routes/home.tsx'),
+    route('sign-in', 'routes/sign-in.tsx'),
   ]),
-] satisfies RouteConfig;
+
+  // dashboard
+  layout('layouts/dashboard.tsx', [
+    route('dashboard', './routes/dashboard-home.tsx'),
+    route('dashboard/:id', './routes/dashboard-page.tsx'),
+  ]),
+] satisfies RouteConfig
