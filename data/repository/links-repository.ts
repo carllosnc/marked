@@ -1,6 +1,6 @@
 import { db } from '@/app/database'
 import type { NewLink } from '@/types/db-types'
-import { links } from '../db-schemas/link-schema'
+import { links } from '@/data/db-schemas/link-schema'
 import { eq, desc } from 'drizzle-orm'
 
 export async function createLink(link: NewLink) {
@@ -16,5 +16,5 @@ export async function getLinks(pageId: string) {
 }
 
 export async function deleteLink(id: string) {
-  return await db.delete(links).where(eq(links.id, id))
+  return await db.delete(links).where(eq(links.id, id)).returning()
 }
