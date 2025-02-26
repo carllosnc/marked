@@ -36,9 +36,14 @@ function useGetLinks(pageId: string) {
 }
 
 function useDeleteLink(id: string) {
+  const [globalLinks, setGlobalLinks] = useAtom(linksAtom)
+
   return useMutation({
+    onSuccess: (data) => {
+      setGlobalLinks(globalLinks.filter((link) => link.id !== data[0].id))
+    },
     mutationFn: async () => {
-      await deleteLink(id)
+      return await deleteLink(id)
     },
   })
 }
