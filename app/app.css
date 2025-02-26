@@ -4,7 +4,7 @@
 @custom-variant dark (&:is(.dark *));
 
 @theme {
-  --font-sans: 'Inter', ui-sans-serif, system-ui, sans-serif,
+  --font-sans: 'Geist', ui-sans-serif, system-ui, sans-serif,
     'Apple Color Emoji', 'Segoe UI Emoji', 'Segoe UI Symbol', 'Noto Color Emoji';
 }
 
@@ -133,7 +133,7 @@
   }
 
   .title-color {
-    @apply text-neutral-900 dark:text-neutral-100;
+    @apply text-neutral-800 dark:text-neutral-100;
   }
 
   .text-color {
@@ -177,15 +177,12 @@
   }
 
   .card-block {
-    @apply shadow-md
-    border
+    @apply border
     rounded-md
     p-4
     bg-white
-    shadow-neutral-200
-    border-neutral-300
+    border-neutral-200
     dark:bg-neutral-900
-    dark:shadow-none
     dark:border-neutral-800;
   }
 
