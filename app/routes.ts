@@ -10,6 +10,8 @@ export default [
   layout('layouts/base.tsx', [
     index('routes/home.tsx'),
     route('sign-in', 'routes/sign-in.tsx'),
+    route('page/:slug', 'routes/page.tsx'),
+    route('profile/:id', 'routes/profile.tsx'),
   ]),
 
   // dashboard
