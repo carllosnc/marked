@@ -17,6 +17,7 @@ import { File, User } from 'lucide-react'
 import { newPageSchema } from '@/data/zod-schemas/new-page-schema'
 import { useCreatePage } from '@/data/db-hooks/page-hooks'
 import { extractErrorDetails } from '@/lib/error'
+import { NavLink } from 'react-router'
 
 type Props = {
   userId: string
@@ -58,10 +59,12 @@ export function DashboardNewPage({ userId }: Props) {
       <span className="text-color"> {[].length} Pages </span>
 
       <div className="flex gap-[10px] flex-col sm:flex-row">
-        <Button variant="outline">
-          <User className="w-4 h-4 mr-2" />
-          Public profile
-        </Button>
+        <NavLink to={`/profile/${userId}`}>
+          <Button variant="outline">
+            <User className="w-4 h-4 mr-2" />
+            Public profile
+          </Button>
+        </NavLink>
 
         <Dialog open={open} onOpenChange={setOpen}>
           <DialogTrigger asChild>
