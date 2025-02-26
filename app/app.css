@@ -1,12 +1,11 @@
-@import "tailwindcss";
-
+@import 'tailwindcss';
 @plugin "tailwindcss-animate";
 
 @custom-variant dark (&:is(.dark *));
 
 @theme {
-  --font-sans: "Inter", ui-sans-serif, system-ui, sans-serif,
-    "Apple Color Emoji", "Segoe UI Emoji", "Segoe UI Symbol", "Noto Color Emoji";
+  --font-sans: 'Inter', ui-sans-serif, system-ui, sans-serif,
+    'Apple Color Emoji', 'Segoe UI Emoji', 'Segoe UI Symbol', 'Noto Color Emoji';
 }
 
 :root {
@@ -128,60 +127,57 @@
   }
 }
 
-@layer utilities {
+@layer components {
   .debug {
-    @apply outline-red-500 outline
+    @apply outline-red-500 outline;
   }
 
   .title-color {
-    @apply text-neutral-900 dark:text-neutral-100
+    @apply text-neutral-900 dark:text-neutral-100;
   }
 
   .text-color {
-    @apply text-neutral-500 dark:text-neutral-400
+    @apply text-neutral-500 dark:text-neutral-400;
   }
 
   .link-color {
-    @apply text-blue-600 dark:text-blue-300 hover:underline hover:!shadow-none
+    @apply text-blue-600 dark:text-blue-300 hover:underline hover:!shadow-none;
   }
 
   .danger-color {
-    @apply text-red-500 dark:text-red-400
+    @apply text-red-500 dark:text-red-400;
   }
 
   .card-linkable {
-    @apply hover:!border-blue-500 transition-all dark:hover:!border-blue-300
+    @apply hover:!border-blue-500 transition-all dark:hover:!border-blue-300;
   }
 
   .page-bg {
-    @apply bg-neutral-100 dark:bg-neutral-950
+    @apply bg-neutral-100 dark:bg-neutral-950;
   }
 
   .border-color {
-    @apply border-neutral-300 dark:border-neutral-800
+    @apply border-neutral-300 dark:border-neutral-800;
   }
 
   .dialog-content {
-    @apply
-    border
+    @apply border
     gap-[30px]
     border-white
     dark:bg-neutral-900
     dark:border-neutral-800
-    rounded-lg
+    rounded-lg;
   }
 
   .sheet-content {
-    @apply
-    border
+    @apply border
     border-white
     dark:bg-neutral-900
-    dark:border-neutral-800
+    dark:border-neutral-800;
   }
 
   .card-block {
-    @apply
-    shadow-md
+    @apply shadow-md
     border
     rounded-md
     p-4
@@ -190,7 +186,7 @@
     border-neutral-300
     dark:bg-neutral-900
     dark:shadow-none
-    dark:border-neutral-800
+    dark:border-neutral-800;
   }
 
   .no-scrollbar::-webkit-scrollbar {
@@ -202,13 +198,18 @@
     scrollbar-width: none;
   }
 
-  .width-100{ max-width: 100px;}
-
-  .width-200{ max-width: 200px;}
-
-  .width-300{ max-width: 300px;}
-
-  .display-none{ display: none;}
+  .width-100 {
+    max-width: 100px;
+  }
+  .width-200 {
+    max-width: 200px;
+  }
+  .width-300 {
+    max-width: 300px;
+  }
+  .display-none {
+    display: none;
+  }
 
   .fade-in {
     animation: fade-in 0.5s ease-in-out;
@@ -229,8 +230,7 @@
     }
 
     h2 {
-      @apply
-        text-xl
+      @apply text-xl
         font-bold
         pb-[10px]
         border-b
@@ -243,11 +243,14 @@
       @apply text-lg font-bold;
     }
 
-    h1, h2, h3 {
+    h1,
+    h2,
+    h3 {
       @apply text-neutral-900 dark:text-neutral-100;
     }
 
-    p, li{
+    p,
+    li {
       @apply text-neutral-500 dark:text-neutral-400;
     }
 
@@ -255,6 +258,4 @@
       @apply text-neutral-900 dark:text-neutral-100;
     }
   }
-
-
 }
