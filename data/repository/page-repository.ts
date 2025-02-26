@@ -19,6 +19,10 @@ export async function getPage(id: string) {
   return await db.select().from(pages).where(eq(pages.id, id))
 }
 
+export async function getPageBySlug(slug: string) {
+  return await db.select().from(pages).where(eq(pages.slug, slug))
+}
+
 export async function updatePage(id: string, page: NewPage) {
   return await db.update(pages).set(page).where(eq(pages.id, id)).returning()
 }
