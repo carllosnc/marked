@@ -5,8 +5,9 @@ import {
   getPage,
   deletePage,
   updatePage,
+  getPageBySlug,
 } from '@/data/repository/page-repository'
-import type { NewPage } from '@/types/db-types'
+import type { NewPage, Page } from '@/types/db-types'
 import { useAtom } from 'jotai'
 import { pagesAtom } from '@/app/atoms/pages-atom'
 import { linksAtom } from '@/app/atoms/links-atom'
@@ -20,6 +21,7 @@ function useGetPages(userId: string) {
     queryKey: ['getPages', userId],
     queryFn: async () => {
       const pages = await getPages(userId)
+
       setGlobalPages(pages)
       return pages
     },
@@ -28,17 +30,36 @@ function useGetPages(userId: string) {
 
 function useGetPage(pageId: string) {
   const [_, setGlobalLinks] = useAtom(linksAtom)
+  const [__, setGlobalPages] = useAtom(pagesAtom)
 
   return useQuery({
+    gcTime: 0,
     queryKey: ['getPage', pageId],
     queryFn: async () => {
-      //get single page
       const page = await getPage(pageId)
-      //get all links
       const links = await getLinks(pageId)
+      const pages = await getPages(page[0].user_id!)
+
+      setGlobalLinks(links)
+      setGlobalPages(pages)
+
+      return page[0]
+    },
+  })
+}
+
+function useGetPageBySlug(slug: string) {
+  const [_, setGlobalLinks] = useAtom(linksAtom)
+
+  return useQuery({
+    queryKey: ['getPageBySlug', slug],
+    queryFn: async () => {
+      const page = await getPageBySlug(slug)
+      const links = await getLinks(page[0].id)
+
       setGlobalLinks(links)
 
-      return page
+      return page[0]
     },
   })
 }
@@ -83,10 +104,14 @@ function useUpdatePage(id: string) {
   return useMutation({
     onSuccess: (data) => {
       const updatedPage = data[0]
-      const filteredPages = globalPages.filter(
-        (page) => page.id !== updatedPage.id
-      )
-      setGlobalPages(filteredPages)
+      const updatedGlobalPages = globalPages.map((page) => {
+        if (page.id === updatedPage.id) {
+          return updatedPage
+        }
+        return page
+      })
+
+      setGlobalPages(updatedGlobalPages)
     },
     mutationFn: async (data: any) => {
       return await updatePage(id, data)
@@ -94,4 +119,11 @@ function useUpdatePage(id: string) {
   })
 }
 
-export { useGetPages, useCreatePage, useGetPage, useDeletePage, useUpdatePage }
+export {
+  useGetPages,
+  useCreatePage,
+  useGetPage,
+  useDeletePage,
+  useUpdatePage,
+  useGetPageBySlug,
+}
