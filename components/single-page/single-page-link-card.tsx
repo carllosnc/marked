@@ -2,16 +2,15 @@ import type { Link } from '@/types/db-types'
 import { Button } from '@/components/ui/button'
 import { Spinner } from '@/components/ui/spinner'
 import { Trash } from 'lucide-react'
-import { useEffect, useRef, useState } from 'react'
 import { toast } from 'sonner'
+import { useDeleteLink } from '@/data/db-hooks/links-hooks'
 
 type props = {
   link: Link
 }
 
 export function SinglePageLinkCard({ link }: props) {
-  const imageRef = useRef<HTMLImageElement>(null)
-  const [loading, setLoading] = useState(false)
+  const { mutate, isPending } = useDeleteLink(link.id!)
 
   function getFavicon(url: string) {
     const host = new URL(url).hostname
@@ -19,31 +18,12 @@ export function SinglePageLinkCard({ link }: props) {
     return `https://icons.duckduckgo.com/ip3/${host}.ico`
   }
 
-  function checkRatio() {
-    if (imageRef.current) {
-      const ratio = Number(
-        (
-          (imageRef.current!.naturalWidth || 0) /
-          (imageRef.current!.naturalHeight || 1)
-        ).toFixed(1)
-      )
-
-      if (ratio >= 1.5 && ratio <= 1.9) {
-        imageRef.current!.classList.remove('hidden')
-      }
-    }
-  }
-
   async function deleteLink() {
-    setLoading(true)
-    toast(`Link: ${link.title} was deleted`)
+    mutate()
+    toast(`Link: deleted`, {
+      description: link.title,
+    })
   }
-
-  useEffect(() => {
-    setTimeout(() => {
-      checkRatio()
-    }, 500)
-  }, [imageRef])
 
   return (
     <article className="card-block card-linkable flex-col gap-[20px] items-start overflow-hidden flex md:items-center md:flex-row">
@@ -61,18 +41,18 @@ export function SinglePageLinkCard({ link }: props) {
                 className="w-[20px] h-[20px] min-w-[20px] min-h-[20px]"
               />
             </div>
-            <span className="title-color max-w-[500px]"> {link.title!} </span>
+            <span className="title-color max-w-[500px]">{link.title!}</span>
           </div>
         </div>
       </a>
 
       <Button
-        disabled={loading}
+        disabled={isPending}
         onClick={deleteLink}
         variant="outline"
         size="icon"
       >
-        {loading ? (
+        {isPending ? (
           <Spinner size="sm" color="danger" />
         ) : (
           <Trash className="text-color" size={15} />
