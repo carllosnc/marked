@@ -1,9 +1,7 @@
 import { Fragment } from 'react'
 import { SinglePageToolbar } from '@/components/single-page/single-page-toolbar'
 import { SiglePageListLinks } from '@/components/single-page/single-page-list-links'
-import type { Link, Page } from '@/types/db-types'
-import { useGetPages } from '@/data/db-hooks/page-hooks'
-import { useGetLinks } from '@/data/db-hooks/links-hooks'
+import type { Page } from '@/types/db-types'
 
 type Props = {
   id: string
