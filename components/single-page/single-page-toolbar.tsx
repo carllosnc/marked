@@ -53,7 +53,7 @@ export function SinglePageToolbar({ pageId, page }: Props) {
         <div className="flex gap-[20px]">
           <SinglePageTogglePublic pageId={pageId} page={page} />
 
-          <NavLink target="_blank" to={`/links/${pageId}`}>
+          <NavLink target="_blank" to={`/page/${page.slug}`}>
             <Button size="icon" variant="outline">
               <Globe className="w-4 h-4 text-color" />
             </Button>
