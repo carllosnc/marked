@@ -11,7 +11,6 @@ import { upperFirst } from '@/lib/utils'
 import { useAtom } from 'jotai'
 import { pagesAtom } from '@/app/atoms/pages-atom'
 import { NavLink } from 'react-router'
-import { useGetPages } from '@/data/db-hooks/page-hooks'
 
 export function SinglePageSheet() {
   const [globalPages] = useAtom(pagesAtom)
@@ -27,12 +26,12 @@ export function SinglePageSheet() {
         side="left"
         className="w-full max-w-[300px] md:!max-w-[300px] no-scrollbar overflow-y-auto sheet-content"
       >
-        <SheetHeader className="text-left flex flex-col gap-[10px]">
+        <SheetHeader className="text-left flex flex-col gap-[20px]">
           <SheetTitle className="text-md">Your pages</SheetTitle>
 
           <hr />
 
-          <div className="flex flex-col gap-[14px]">
+          <div className="flex flex-col gap-[15px]">
             {globalPages.map((page, index) => {
               return (
                 <NavLink
