@@ -1,8 +1,4 @@
-import {
-  Avatar,
-  AvatarFallback,
-  AvatarImage
-} from '@/components/ui/avatar'
+import { Avatar, AvatarFallback, AvatarImage } from '@/components/ui/avatar'
 import { Button } from '@/components/ui/button'
 import {
   DropdownMenu,
@@ -10,12 +6,12 @@ import {
   DropdownMenuItem,
   DropdownMenuSeparator,
   DropdownMenuTrigger,
-  DropdownMenuLabel
+  DropdownMenuLabel,
 } from '@/components/ui/dropdown-menu'
 import { useUser, useClerk } from '@clerk/clerk-react'
-import { LuLogOut, LuLayoutDashboard, LuHouse } from "react-icons/lu";
-import { useNavigate, NavLink } from "react-router"
-import { Spinner } from '@/components/ui/spinner';
+import { LuLogOut, LuLayoutDashboard, LuHouse } from 'react-icons/lu'
+import { useNavigate, NavLink } from 'react-router'
+import { Spinner } from '@/components/ui/spinner'
 
 export function UserButton() {
   const { user, isLoaded } = useUser()
@@ -37,12 +33,8 @@ export function UserButton() {
         <DropdownMenu>
           <DropdownMenuTrigger>
             <Avatar className="w-8 h-8 rounded-full">
-              <AvatarImage
-                src={user.imageUrl}
-              />
-              <AvatarFallback>
-                {user.firstName?.slice(0, 2)}
-              </AvatarFallback>
+              <AvatarImage src={user.imageUrl} />
+              <AvatarFallback>{user.firstName?.slice(0, 2)}</AvatarFallback>
             </Avatar>
           </DropdownMenuTrigger>
 
@@ -57,14 +49,17 @@ export function UserButton() {
               </DropdownMenuItem>
             </NavLink>
 
-            <NavLink to="/dashboard">
+            <NavLink to="/dashboard" state={{ foo: 'foo', bar: 'bar' }}>
               <DropdownMenuItem className="cursor-pointer flex gap-[10px] items-center">
                 <LuLayoutDashboard />
                 Dashboard
               </DropdownMenuItem>
             </NavLink>
 
-            <DropdownMenuItem className="text-red-500 flex gap-[10px] items-center" onClick={handleSignOut}>
+            <DropdownMenuItem
+              className="text-red-500 flex gap-[10px] items-center"
+              onClick={handleSignOut}
+            >
               <LuLogOut />
               <span>Sign out</span>
             </DropdownMenuItem>
