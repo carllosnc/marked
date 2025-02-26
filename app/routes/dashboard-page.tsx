@@ -26,5 +26,5 @@ export default function DashboardPage() {
     return <DashboardLoading />
   }
 
-  return <SinglePageContent id={id!} page={data![0]} />
+  return <SinglePageContent id={id!} page={data!} />
 }
