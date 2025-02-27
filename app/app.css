@@ -178,7 +178,7 @@
 
   .card-block {
     @apply border
-    rounded-md
+    rounded
     p-4
     bg-white
     border-neutral-200
