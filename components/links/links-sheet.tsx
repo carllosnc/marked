@@ -13,6 +13,7 @@ import { upperFirst } from '@/lib/utils'
 import { useGetPages } from '@/data/db-hooks/page-hooks'
 import { useUser } from '@clerk/react-router'
 import { NavLink } from 'react-router'
+import { useState } from 'react'
 
 type Props = {
   userId: string
@@ -21,20 +22,18 @@ type Props = {
 export function LinksSheet({ userId }: Props) {
   const { isLoading, data } = useGetPages(userId)
   const { user, isLoaded } = useUser()
-
-  function firstName(name: string) {
-    let firstName = name.split(' ')[0]
-    firstName = firstName.substring(0, 6)
-
-    return firstName
-  }
+  const [open, setOpen] = useState(false)
 
   if (isLoading || !isLoaded) {
     return <Spinner size="sm" />
   }
 
+  function handleOpen() {
+    setOpen(!open)
+  }
+
   return (
-    <Sheet>
+    <Sheet open={open} onOpenChange={setOpen}>
       <SheetTrigger asChild>
         <Button className="text-color flex gap-[10px]" variant="outline">
           <span>{user?.firstName}'s Pages</span>
@@ -68,6 +67,7 @@ export function LinksSheet({ userId }: Props) {
             if (page.is_public) {
               return (
                 <NavLink
+                  onClick={handleOpen}
                   className="text-sm text-color items-center hover:underline flex gap-[10px] truncate"
                   to={`/page/${page.slug}`}
                   key={index}
