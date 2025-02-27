@@ -11,13 +11,19 @@ import { upperFirst } from '@/lib/utils'
 import { useAtom } from 'jotai'
 import { pagesAtom } from '@/app/atoms/pages-atom'
 import { NavLink } from 'react-router'
+import { useState } from 'react'
 
 export function SinglePageSheet() {
   const [globalPages] = useAtom(pagesAtom)
+  const [open, setOpen] = useState(false)
+
+  function handleOpen() {
+    setOpen(!open)
+  }
 
   return (
-    <Sheet>
-      <SheetTrigger asChild>
+    <Sheet open={open} onOpenChange={setOpen}>
+      <SheetTrigger asChild onClick={handleOpen}>
         <Button className="text-color" variant="outline">
           Pages
         </Button>
@@ -35,6 +41,7 @@ export function SinglePageSheet() {
             {globalPages.map((page, index) => {
               return (
                 <NavLink
+                  onClick={handleOpen}
                   className="text-sm title-color items-center hover:underline flex gap-[10px] truncate"
                   to={`/dashboard/${page.id}`}
                   key={index}
