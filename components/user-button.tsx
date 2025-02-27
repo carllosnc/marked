@@ -8,7 +8,7 @@ import {
   DropdownMenuTrigger,
   DropdownMenuLabel,
 } from '@/components/ui/dropdown-menu'
-import { useUser, useClerk } from '@clerk/clerk-react'
+import { useUser, useClerk } from '@clerk/react-router'
 import { LuLogOut, LuLayoutDashboard, LuHouse } from 'react-icons/lu'
 import { useNavigate, NavLink } from 'react-router'
 import { Spinner } from '@/components/ui/spinner'
