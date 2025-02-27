@@ -40,7 +40,7 @@ export default function ProfilePage() {
               return (
                 <NavLink
                   className="text-color text-sm items-center hover:underline flex gap-[10px]"
-                  to={`/page/${page.id}`}
+                  to={`/page/${page.slug}`}
                   key={index}
                 >
                   <File size={15} />
@@ -67,7 +67,7 @@ export default function ProfilePage() {
         </NavLink>
 
         <div className="px-[20px] pt-[20px] w-full">
-          <LogoHorizontal className="fill-neutral-400 m-auto w-full max-w-[150px] h-auto dark:fill-neutral-700" />
+          <LogoHorizontal className="fill-neutral-300 m-auto w-full max-w-[150px] h-auto dark:fill-neutral-700" />
         </div>
       </div>
     </main>
