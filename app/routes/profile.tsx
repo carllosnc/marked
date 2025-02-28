@@ -2,35 +2,25 @@ import { LogoHorizontal } from '@/components/logo'
 import { File, Lock } from 'lucide-react'
 import { LinksLoading } from '@/components/links/links-loading'
 import { upperFirst } from '@/lib/utils'
-import { Avatar, AvatarFallback, AvatarImage } from '@radix-ui/react-avatar'
-import { useUser } from '@clerk/react-router'
 import { useGetPages } from '@/data/db-hooks/page-hooks'
-import { NavLink } from 'react-router'
+import { NavLink, useParams } from 'react-router'
 
 export default function ProfilePage() {
-  const { user, isLoaded } = useUser()
-  const { data, isLoading } = useGetPages(user?.id!)
+  const { id } = useParams()
+  const { data, isLoading } = useGetPages(id!)
 
-  if (isLoading || !isLoaded) {
+  if (isLoading) {
     return LinksLoading()
   }
+
+  const authorName = data ? data[0]?.author_name : 'Unknown'
 
   return (
     <main className="w-full page-bg min-h-screen flex flex-col gap-[30px] items-center justify-center">
       <div className="min-h-screen px-[20px] py-[50px] bg-center w-full max-w-[450px] flex flex-col gap-[20px] items-center justify-center">
         <header className="flex w-full max-w-[360px] flex-col gap-[10px] items-center justify-center">
-          <Avatar>
-            <AvatarImage
-              className="w-8 h-8 rounded-full"
-              src={user?.imageUrl}
-            />
-            <AvatarFallback className="bg-black dark:bg-neutral-300 text-white rounded-full dark:text-neutral-800 w-[34px] h-[34px] font-bold flex items-center justify-center text-xs">
-              {user?.fullName?.slice(0, 2).toUpperCase()}
-            </AvatarFallback>
-          </Avatar>
-
           <h1 className="title-color font-bold">
-            {upperFirst(user?.fullName!)}
+            {upperFirst(authorName!)}'s pages
           </h1>
         </header>
 
