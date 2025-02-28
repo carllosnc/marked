@@ -8,6 +8,7 @@ export const pages = sqliteTable('pages', {
   description: text('description'),
   slug: text('slug').unique().notNull(),
   user_id: text('user_id'),
+  author_name: text('author_name'),
   is_public: int('is_public').default(1),
   created_at: text('created_at').default(Date().toString()),
 })
