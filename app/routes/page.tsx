@@ -13,7 +13,7 @@ import { useNavigate } from 'react-router'
 import { useEffect } from 'react'
 
 export function meta({}: Route.MetaArgs) {
-  return [{ title: 'Links page' }]
+  return [{ title: 'Marked' }]
 }
 
 export default function PublicPage() {

@@ -7,10 +7,7 @@ import { LogoSymbol } from '@/components/logo'
 import { SiTypescript, SiReact, SiReactrouter, SiTurso } from 'react-icons/si'
 
 export function meta({}: Route.MetaArgs) {
-  return [
-    { title: 'Home page' },
-    { name: 'description', content: 'Welcome to React Router!' },
-  ]
+  return [{ title: 'Marked' }]
 }
 
 export default function Home() {

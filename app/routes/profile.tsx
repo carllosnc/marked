@@ -1,9 +1,14 @@
+import type { Route } from '../+types/root'
 import { LogoHorizontal } from '@/components/logo'
 import { File, Lock } from 'lucide-react'
 import { LinksLoading } from '@/components/links/links-loading'
 import { upperFirst } from '@/lib/utils'
 import { useGetPages } from '@/data/db-hooks/page-hooks'
 import { NavLink, useParams } from 'react-router'
+
+export function meta({}: Route.MetaArgs) {
+  return [{ title: 'Marked' }]
+}
 
 export default function ProfilePage() {
   const { id } = useParams()
