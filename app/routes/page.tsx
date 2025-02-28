@@ -21,18 +21,19 @@ export default function PublicPage() {
   const { isLoading, data } = useGetPageBySlug(slug!)
   const { user, isLoaded } = useUser()
   const navigate = useNavigate()
+  const authorName = data ? data?.author_name : ''
 
   useEffect(() => {
     if (!isLoading && !data) {
       navigate(`/not-found`)
+    } else {
+      document.title = `${data?.title || 'Loading...'} • Marked`
     }
   }, [isLoading, data, navigate])
 
   if (isLoading) {
     return <LinksLoading />
   }
-
-  const authorName = data ? data?.author_name : 'Unknown'
 
   function GoToDashboard() {
     if (isLoaded && user) {
