@@ -1,3 +1,4 @@
+import type { Route } from '../+types/root'
 import { LogoSymbol, LogoHorizontal } from '@/components/logo'
 import { LinksList } from '@/components/links/links-list'
 import { LinksSheet } from '@/components/links/links-sheet'
@@ -8,7 +9,8 @@ import { upperFirst } from '@/lib/utils'
 import { Button } from '@/components/ui/button'
 import { useGetPageBySlug } from '@/data/db-hooks/page-hooks'
 import { useUser } from '@clerk/react-router'
-import type { Route } from '../+types/root'
+import { useNavigate } from 'react-router'
+import { useEffect } from 'react'
 
 export function meta({}: Route.MetaArgs) {
   return [{ title: 'Links page' }]
@@ -18,13 +20,22 @@ export default function PublicPage() {
   const { slug } = useParams()
   const { isLoading, data } = useGetPageBySlug(slug!)
   const { user, isLoaded } = useUser()
+  const navigate = useNavigate()
+
+  useEffect(() => {
+    if (!isLoading && !data) {
+      navigate(`/not-found`)
+    }
+  }, [isLoading, data, navigate])
 
   if (isLoading) {
     return <LinksLoading />
   }
 
+  const authorName = data ? data?.author_name : 'Unknown'
+
   function GoToDashboard() {
-    if (isLoaded) {
+    if (isLoaded && user) {
       return (
         <NavLink
           className="fixed bottom-[20px] right-[20px] z-10"
@@ -91,7 +102,7 @@ export default function PublicPage() {
       </div>
 
       <NavLink to={`/profile/${data?.user_id}`} className="link-color text-sm">
-        by {user?.fullName}
+        by {authorName}
       </NavLink>
 
       <div className="px-[20px] w-full">
