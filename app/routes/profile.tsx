@@ -5,6 +5,7 @@ import { LinksLoading } from '@/components/links/links-loading'
 import { upperFirst } from '@/lib/utils'
 import { useGetPages } from '@/data/db-hooks/page-hooks'
 import { NavLink, useParams } from 'react-router'
+import { useEffect } from 'react'
 
 export function meta({}: Route.MetaArgs) {
   return [{ title: 'Marked' }]
@@ -13,6 +14,12 @@ export function meta({}: Route.MetaArgs) {
 export default function ProfilePage() {
   const { id } = useParams()
   const { data, isLoading } = useGetPages(id!)
+
+  useEffect(() => {
+    if (!isLoading && data) {
+      document.title = `${data[0]?.author_name}'s pages • Marked`
+    }
+  }, [data, isLoading])
 
   if (isLoading) {
     return LinksLoading()
