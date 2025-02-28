@@ -7,11 +7,9 @@ import {
   SheetTrigger,
 } from '@/components/ui/sheet'
 import { File, Lock } from 'lucide-react'
-import { Avatar, AvatarFallback, AvatarImage } from '../ui/avatar'
 import { Spinner } from '@/components/ui/spinner'
 import { upperFirst } from '@/lib/utils'
 import { useGetPages } from '@/data/db-hooks/page-hooks'
-import { useUser } from '@clerk/react-router'
 import { NavLink } from 'react-router'
 import { useState } from 'react'
 
@@ -21,10 +19,9 @@ type Props = {
 
 export function LinksSheet({ userId }: Props) {
   const { isLoading, data } = useGetPages(userId)
-  const { user, isLoaded } = useUser()
   const [open, setOpen] = useState(false)
 
-  if (isLoading || !isLoaded) {
+  if (isLoading) {
     return <Spinner size="sm" />
   }
 
@@ -32,11 +29,13 @@ export function LinksSheet({ userId }: Props) {
     setOpen(!open)
   }
 
+  const authorName = data ? data[0]?.author_name : 'Unknown'
+
   return (
     <Sheet open={open} onOpenChange={setOpen}>
       <SheetTrigger asChild>
         <Button className="text-color flex gap-[10px]" variant="outline">
-          <span>{user?.firstName}'s Pages</span>
+          <span>{authorName}'s pages</span>
         </Button>
       </SheetTrigger>
 
@@ -44,18 +43,10 @@ export function LinksSheet({ userId }: Props) {
         side="left"
         className="flex flex-col w-full max-w-[300px] no-scrollbar md:!max-w-[260px] overflow-y-auto sheet-content"
       >
-        <SheetHeader className="text-left m-0 p-0 pt-[30px]">
-          <div className="flex flex-col justify-center items-center gap-[10px]">
-            <Avatar>
-              <AvatarImage
-                className="w-10 h-10 rounded-full object-cover"
-                src={user?.imageUrl}
-              />
-              <AvatarFallback>{user?.firstName?.slice(0, 2)}</AvatarFallback>
-            </Avatar>
-
-            <SheetTitle className="text-sm text-center title-color">
-              {user?.firstName}'s pages
+        <SheetHeader className="text-left m-0 p-0 px-[20px] pt-[30px]">
+          <div className="flex flex-col gap-[10px]">
+            <SheetTitle className="text-sm title-color">
+              {authorName}'s pages
             </SheetTitle>
           </div>
         </SheetHeader>
