@@ -59,8 +59,6 @@ export function DashboardNewPage({ userId }: Props) {
 
   return (
     <div className="card-block flex items-center justify-between">
-      <span className="text-color"> {[].length} Pages </span>
-
       <div className="flex gap-[10px] flex-col sm:flex-row">
         <NavLink to={`/profile/${userId}`}>
           <Button variant="outline" className="text-color">
