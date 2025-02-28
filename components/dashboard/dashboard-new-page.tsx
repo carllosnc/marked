@@ -18,6 +18,7 @@ import { newPageSchema } from '@/data/zod-schemas/new-page-schema'
 import { useCreatePage } from '@/data/db-hooks/page-hooks'
 import { extractErrorDetails } from '@/lib/error'
 import { NavLink } from 'react-router'
+import { useUser } from '@clerk/react-router'
 
 type Props = {
   userId: string
@@ -26,6 +27,7 @@ type Props = {
 export function DashboardNewPage({ userId }: Props) {
   const [open, setOpen] = useState(false)
   const { mutate, isPending, isError, error, isSuccess } = useCreatePage()
+  const { user, isLoaded } = useUser()
 
   const {
     register,
@@ -41,6 +43,7 @@ export function DashboardNewPage({ userId }: Props) {
       title: data.title,
       description: data.description,
       user_id: userId,
+      author_name: user?.firstName,
       slug: data.slug,
     }
 
@@ -60,7 +63,7 @@ export function DashboardNewPage({ userId }: Props) {
 
       <div className="flex gap-[10px] flex-col sm:flex-row">
         <NavLink to={`/profile/${userId}`}>
-          <Button variant="outline">
+          <Button variant="outline" className="text-color">
             <User className="w-4 h-4 mr-2" />
             Public profile
           </Button>
@@ -68,7 +71,7 @@ export function DashboardNewPage({ userId }: Props) {
 
         <Dialog open={open} onOpenChange={setOpen}>
           <DialogTrigger asChild>
-            <Button>
+            <Button disabled={!isLoaded}>
               <File className="w-4 h-4 mr-2" />
               New Page
             </Button>
