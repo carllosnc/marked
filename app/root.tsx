@@ -9,7 +9,13 @@ import {
   NavLink,
 } from 'react-router'
 import type { Route } from './+types/root'
-import { ClerkProvider } from '@clerk/react-router'
+import {
+  ClerkProvider,
+  SignedIn,
+  SignedOut,
+  SignInButton,
+  UserButton,
+} from '@clerk/react-router'
 import { QueryClient, QueryClientProvider } from '@tanstack/react-query'
 import './app.css'
 import { Toaster } from '@/components/ui/sonner'
