@@ -48,7 +48,7 @@ export function DashboardPageCard({ page }: Props) {
                 New
               </Badge>
             )}
-            <h2 className="text-[16px] title-color">
+            <h2 className="text-[16px] font-bold title-color">
               {upperFirst(page.title!)}
             </h2>
           </div>
