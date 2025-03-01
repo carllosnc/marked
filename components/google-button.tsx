@@ -1,7 +1,7 @@
 import { useSignIn } from '@clerk/clerk-react'
 import { Button } from './ui/button'
-import { FcGoogle } from "react-icons/fc";
-import { Spinner } from './ui/spinner';
+import { FcGoogle } from 'react-icons/fc'
+import { Spinner } from './ui/spinner'
 
 export function GoogleSignIn() {
   const { signIn, isLoaded } = useSignIn()
