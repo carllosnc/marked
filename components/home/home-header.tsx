@@ -13,11 +13,13 @@ export function HomeHeader() {
         <LogoHorizontal className="w-[120px] h-auto fill-neutral-950 dark:fill-white" />
 
         <div className="flex gap-[20px]">
-          <NavLink to="/dashboard">
-            <Button size="sm" variant="outline">
-              Dashboard
-            </Button>
-          </NavLink>
+          {isLoaded && user?.firstName && (
+            <NavLink to="/dashboard">
+              <Button size="sm" variant="outline">
+                Dashboard
+              </Button>
+            </NavLink>
+          )}
           <ClerkButton />
         </div>
       </div>
