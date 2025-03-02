@@ -73,16 +73,16 @@ export default function PublicPage() {
   }
 
   return (
-    <main className="relative w-full page-bg py-[25px] min-h-screen flex flex-col gap-[25px] items-center">
+    <main className="relative w-full page-bg py-[25px] min-h-screen flex flex-col gap-[20px] items-center">
       <header className="w-full px-[20px] flex justify-center">
-        <section className="flex flex-col sm:flex-row items-center gap-[20px] w-full max-w-[590px]">
+        <section className="flex items-center gap-[15px] w-full max-w-[590px]">
           <NavLink to="/">
-            <LogoSymbol className="fill-black max-w-[30px] h-auto dark:fill-white" />
+            <LogoSymbol className="fill-black max-w-[20px] h-auto dark:fill-white" />
           </NavLink>
 
           <GoToDashboard />
 
-          <div className="flex flex-col text-center sm:text-start">
+          <div className="flex flex-col">
             <h1 className="text-[18px] title-color font-bold">
               {upperFirst(data?.title!)}
             </h1>
@@ -96,7 +96,7 @@ export default function PublicPage() {
         </section>
       </header>
 
-      <hr className="w-full h-[1px] border-t border-neutral-300 border-dashed dark:border-neutral-800" />
+      <hr className="w-full h-[1px] border-t border-neutral-300 border-dark:border-neutral-800" />
 
       <div className="w-full">
         <LinksList userId={data?.user_id!} pageId={data?.id} />
