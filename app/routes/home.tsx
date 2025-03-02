@@ -17,7 +17,7 @@ export default function Home() {
 
       <div className="w-full m-auto max-w-[900px] flex flex-col gap-[50px] pt-[30px]">
         <div className="w-full px-6 flex flex-col gap-[20px] items-center justify-center">
-          <LogoSymbol className="w-[80px] h-auto fill-black dark:fill-white" />
+          <LogoSymbol className="w-[60px] h-auto fill-black dark:fill-white" />
 
           <h1 className="md:text-[80px] md:leading-[70px] w-full max-w-[500px] text-[60px] leading-[50px] font-extrabold text-center">
             <span>Save</span> <br />
