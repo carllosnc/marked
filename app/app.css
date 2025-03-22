@@ -153,7 +153,7 @@
   }
 
   .page-bg {
-    @apply bg-neutral-100 dark:bg-neutral-950;
+    @apply bg-[#efefef] dark:bg-neutral-950;
   }
 
   .border-color {
@@ -177,13 +177,10 @@
   }
 
   .card-block {
-    @apply border
-    p-4
+    @apply p-4
     bg-white
-    shadow-md
     shadow-neutral-200
-    rounded-lg
-    border-neutral-300
+    rounded
     dark:bg-neutral-900
     dark:border-neutral-800;
   }
