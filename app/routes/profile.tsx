@@ -36,7 +36,7 @@ export default function ProfilePage() {
           </h1>
         </header>
 
-        <div className="w-full card-block flex flex-col gap-[10px] max-w-[360px]">
+        <div className="w-full border p-[24px] card-block flex flex-col gap-[10px] max-w-[360px]">
           {data?.map((page, index) => {
             if (page.is_public) {
               return (
