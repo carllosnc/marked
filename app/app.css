@@ -153,11 +153,11 @@
   }
 
   .page-bg {
-    @apply bg-[#efefef] dark:bg-neutral-950;
+    @apply bg-[#f2f2f2] dark:bg-neutral-950;
   }
 
   .border-color {
-    @apply border-neutral-300 dark:border-neutral-800;
+    @apply border-neutral-200 dark:border-neutral-800;
   }
 
   .dialog-content {
@@ -179,8 +179,10 @@
   .card-block {
     @apply p-4
     bg-white
+    border
+    border-white
     shadow-neutral-200
-    rounded
+    rounded-lg
     dark:bg-neutral-900
     dark:border-neutral-800;
   }
