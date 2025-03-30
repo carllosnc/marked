@@ -27,7 +27,7 @@ export default function PublicPage() {
     if (!isLoading && !data) {
       navigate(`/not-found`)
     } else {
-      document.title = `${data?.title || 'Loading...'} • Marked`
+      document.title = `Marked | ${data?.title || 'Loading...'}`
     }
   }, [isLoading, data, navigate])
 
