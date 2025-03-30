@@ -17,7 +17,7 @@ export default function ProfilePage() {
 
   useEffect(() => {
     if (!isLoading && data) {
-      document.title = `${data[0]?.author_name}'s pages • Marked`
+      document.title = `Marked | ${data[0]?.author_name}'s pages`
     }
   }, [data, isLoading])
 
