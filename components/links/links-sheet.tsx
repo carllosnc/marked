@@ -41,7 +41,7 @@ export function LinksSheet({ userId }: Props) {
 
       <SheetContent
         side="left"
-        className="flex flex-col w-full max-w-[300px] no-scrollbar md:!max-w-[260px] overflow-y-auto sheet-content"
+        className="flex pb-[20px] flex-col w-full max-w-[300px] no-scrollbar md:!max-w-[260px] overflow-y-auto sheet-content"
       >
         <SheetHeader className="text-left m-0 p-0 px-[20px] pt-[30px]">
           <div className="flex flex-col gap-[10px]">
