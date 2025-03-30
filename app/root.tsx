@@ -33,10 +33,49 @@ export function Layout({ children }: { children: React.ReactNode }) {
       <head>
         <meta charSet="utf-8" />
         <meta name="viewport" content="width=device-width, initial-scale=1" />
-        <Meta />
         <Links />
 
+        <title>Marked | Save Your Favorites</title>
+
+        <meta
+          name="description"
+          content="Marked helps you save and organize all your favorite websites, articles, videos, and more in one beautiful place."
+        />
+        <meta
+          name="keywords"
+          content="bookmarks, favorites, save links, bookmark manager, read later, web app"
+        />
+        <meta name="author" content="Carlos Costa" />
+
         <meta name="theme-color" content="#000000" />
+
+        <meta property="og:type" content="website" />
+        <meta property="og:url" content="https://marked-links.vercel.app/" />
+        <meta
+          property="og:title"
+          content="Marked | The Modern Way to Save Favorites"
+        />
+        <meta
+          property="og:description"
+          content="Save, organize and discover your favorite content from around the web, all in one beautiful place."
+        />
+        <meta property="og:image" content="/og.webp" />
+
+        <meta property="twitter:card" content="summary_large_image" />
+        <meta
+          property="twitter:url"
+          content="https://marked-links.vercel.app/"
+        />
+        <meta
+          property="twitter:title"
+          content="Marked | The Modern Way to Save Favorites"
+        />
+        <meta
+          property="twitter:description"
+          content="Save, organize and discover your favorite content from around the web, all in one beautiful place."
+        />
+        <meta property="twitter:image" content="/og.webp" />
+
         <link rel="preconnect" href="https://fonts.googleapis.com" />
         <link
           rel="preconnect"
@@ -47,6 +86,8 @@ export function Layout({ children }: { children: React.ReactNode }) {
           href="https://fonts.googleapis.com/css2?family=Geist:wght@100..900&display=swap"
           rel="stylesheet"
         />
+
+        <Meta />
       </head>
       <body>
         {children}
