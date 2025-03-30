@@ -16,7 +16,7 @@ export async function loader(args: any) {
 }
 
 export function meta({}: Route.MetaArgs) {
-  return [{ title: 'Page' }]
+  return [{ title: 'Marked | Page' }]
 }
 
 export default function DashboardPage() {
