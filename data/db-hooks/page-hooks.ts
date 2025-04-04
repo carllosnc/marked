@@ -7,7 +7,7 @@ import {
   updatePage,
   getPageBySlug,
 } from '@/data/repository/page-repository'
-import type { NewPage, Page } from '@/types/db-types'
+import type { NewPage } from '@/types/db-types'
 import { useAtom } from 'jotai'
 import { pagesAtom } from '@/app/atoms/pages-atom'
 import { linksAtom } from '@/app/atoms/links-atom'
