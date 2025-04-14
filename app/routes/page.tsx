@@ -74,7 +74,7 @@ export default function PublicPage() {
 
   return (
     <main className="relative w-full page-bg py-[25px] min-h-screen flex flex-col gap-[20px] items-center">
-      <header className="w-full px-[20px] flex justify-center">
+      <header className="w-full border-b border-color pb-[20px] px-[20px] flex justify-center">
         <section className="flex items-center gap-[15px] w-full max-w-[590px]">
           <NavLink to="/">
             <LogoSymbol className="fill-black max-w-[20px] h-auto dark:fill-white" />
@@ -95,8 +95,6 @@ export default function PublicPage() {
           </div>
         </section>
       </header>
-
-      <hr className="w-full h-[1px] border-t border-neutral-300 border-dark:border-neutral-800" />
 
       <div className="w-full">
         <LinksList userId={data?.user_id!} pageId={data?.id} />
