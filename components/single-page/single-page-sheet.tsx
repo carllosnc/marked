@@ -47,7 +47,7 @@ export function SinglePageSheet() {
                   key={index}
                 >
                   <File className="w-[16px] h-[16px] text-color min-h-[16px] min-w-[16px]" />
-                  <p className="truncate">{upperFirst(page.title!)}</p>
+                  <p className="truncate"> {upperFirst(page.title!)}</p>
                 </NavLink>
               )
             })}
