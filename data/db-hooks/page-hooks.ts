@@ -17,7 +17,7 @@ function useGetPages(userId: string) {
   const [_, setGlobalPages] = useAtom(pagesAtom)
 
   return useQuery({
-    gcTime: 0,
+    // gcTime: 0,
     queryKey: ['getPages', userId],
     queryFn: async () => {
       const pages = await getPages(userId)
@@ -33,7 +33,7 @@ function useGetPage(pageId: string) {
   const [__, setGlobalPages] = useAtom(pagesAtom)
 
   return useQuery({
-    gcTime: 0,
+    // gcTime: 0,
     queryKey: ['getPage', pageId],
     queryFn: async () => {
       const page = await getPage(pageId)
