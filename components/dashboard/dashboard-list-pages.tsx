@@ -30,7 +30,7 @@ export function DashboardListPages({ pages }: Props) {
 
       <div className="flex flex-col gap-[15px]">
         {filteredPages.length > 0 ? (
-          filteredPages.map((page, index) => (
+          filteredPages.map((page) => (
             <DashboardPageCard page={page} key={page.id} />
           ))
         ) : (
