@@ -1,18 +1,16 @@
 import { db } from '@/app/database'
 import { pages } from '@/data/db-schemas/page-schema'
 import type { NewPage } from '@/types/db-types'
-import { eq, asc } from 'drizzle-orm'
+import { eq, asc, desc } from 'drizzle-orm'
 
 export async function createPage(page: NewPage) {
   return await db.insert(pages).values(page).returning()
 }
 
 export async function getPages(userId: string) {
-  return await db
-    .select()
-    .from(pages)
-    .where(eq(pages.user_id, userId))
-    .orderBy(asc(pages.created_at))
+  return (
+    await db.select().from(pages).where(eq(pages.user_id, userId))
+  ).reverse()
 }
 
 export async function getPage(id: string) {
