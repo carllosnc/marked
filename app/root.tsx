@@ -47,7 +47,7 @@ export function Layout({ children }: { children: React.ReactNode }) {
         />
         <meta name="author" content="Carlos Costa" />
 
-        <meta name="theme-color" content="#000000" />
+        <meta name="theme-color" content="#ffffff" />
 
         <meta property="og:type" content="website" />
         <meta property="og:url" content="https://marked-links.vercel.app/" />
