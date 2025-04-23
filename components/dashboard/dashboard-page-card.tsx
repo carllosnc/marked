@@ -2,22 +2,13 @@ import { ChevronRight, File } from 'lucide-react'
 import { Badge } from '@/components/ui/badge'
 import type { Page } from '@/types/db-types'
 import { NavLink } from 'react-router'
+import { formatDate } from '@/lib/utils'
 
 type Props = {
   page: Page
 }
 
 export function DashboardPageCard({ page }: Props) {
-  function formatDate(date: string) {
-    const formatter = new Intl.DateTimeFormat('en-US', {
-      year: 'numeric',
-      month: 'short',
-      day: 'numeric',
-    })
-
-    return formatter.format(new Date(date))
-  }
-
   function upperFirst(str: string) {
     return str.charAt(0).toUpperCase() + str.slice(1)
   }
