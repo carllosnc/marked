@@ -8,3 +8,13 @@ export function cn(...inputs: ClassValue[]) {
 export function upperFirst(str: string) {
   return str.charAt(0).toUpperCase() + str.slice(1)
 }
+
+export function formatDate(date: string) {
+  const formatter = new Intl.DateTimeFormat('en-US', {
+    year: 'numeric',
+    month: 'short',
+    day: 'numeric',
+  })
+
+  return formatter.format(new Date(date))
+}
