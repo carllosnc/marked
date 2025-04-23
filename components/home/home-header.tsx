@@ -1,11 +1,14 @@
 import { LogoHorizontal } from '../logo'
 import { Button } from '@/components/ui/button'
-import { NavLink } from 'react-router'
+import { NavLink, useNavigation } from 'react-router'
 import { useUser } from '@clerk/react-router'
 import { ClerkButton } from '../clerk-button'
+import { Spinner } from '@/components/ui/spinner'
 
 export function HomeHeader() {
   const { user, isLoaded } = useUser()
+  const navigation = useNavigation()
+  const isNavigating = Boolean(navigation.location)
 
   return (
     <nav className="border-b border-color px-6">
@@ -16,7 +19,7 @@ export function HomeHeader() {
           {isLoaded && user?.firstName && (
             <NavLink to="/dashboard">
               <Button size="sm" variant="outline">
-                Dashboard
+                Dashboard {isNavigating && <Spinner />}
               </Button>
             </NavLink>
           )}
