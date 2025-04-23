@@ -1,4 +1,4 @@
-import type { NewLink, Page } from '@/types/db-types'
+import type { NewLink, Page, Metadata } from '@/types/db-types'
 import {
   Dialog,
   DialogContent,
@@ -39,14 +39,10 @@ export function SinglePageNewLinkButton({ pageId, page }: Props) {
     setLoading(true)
 
     const metadataRequest = await fetch(
-      `https://api.dub.co/metatags?url=${data.url}`
+      `https://metadata-api.carllos-nc.workers.dev/metadata?url=${data.url}`
     )
 
-    const metadataData = (await metadataRequest.json()) as {
-      title: string
-      description: string
-      image: string
-    }
+    const metadataData: Metadata = await metadataRequest.json()
 
     const link: NewLink = {
       url: data.url,
