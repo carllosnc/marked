@@ -11,3 +11,12 @@ export type UpdatePage = {
   description: string | null
   slug: string
 }
+
+export type Metadata = {
+  url: string
+  title: string | null
+  description: string | null
+  keywords: string | null
+  image: string | null
+  favicon: string | null
+}
