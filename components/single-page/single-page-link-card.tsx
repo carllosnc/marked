@@ -44,7 +44,9 @@ export function SinglePageLinkCard({ link }: props) {
                 className="w-[20px] h-[20px] min-w-[20px] min-h-[20px]"
               />
             </div>
-            <span className="title-color max-w-[500px]">{link.title!}</span>
+            <span className="title-color break-all max-w-[600px]">
+              {link.title!}
+            </span>
           </div>
         </div>
       </a>
