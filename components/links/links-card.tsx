@@ -68,7 +68,7 @@ export function LinksLinkCard({ link, tiny }: props) {
         <span className="link-color">{getHost(link.url!)}</span>
       </div>
 
-      <span className="title-color"> {link.title!} </span>
+      <span className="title-color break-all"> {link.title!} </span>
 
       {!tiny && (
         <img
